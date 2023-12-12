@@ -15,7 +15,7 @@ letsencrypt() {
 
     pathdir="$(pwd)"
 
-    # Se o retorno for difirente de True, irá gerar um arquivo de logs - ssl_logs e uma saída informando do erro, mais o log de erro.
+    # Se o retorno for False, irá gerar um arquivo de log - ssl_logs, mais saída com as informações do log.
     if ! bash acme.sh/acme.sh --issue -d "${domain}" -d www."${domain}" -w "${pathdir}"/public_html --server https://acme-v02.api.letsencrypt.org/directory &> ssl_logs; then
         printf >&2 "%sErro na emissão do Let's encrypt. Gerando logs de erro...\n"
         sleep 3
